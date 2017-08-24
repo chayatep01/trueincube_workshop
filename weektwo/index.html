@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Page Title</title>
+      <style>
+       .demoClass{
+         background-color:blue;
+         color:#fff;
+       }
+      </style>
+    </head>
+
+    <body>
+      <h1 id ="result" class="demoClass">Display</h1>
+      <div class="row" id="row">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+      </div>
+    <button onclick="func()">Click Me</button>
+
+    <div id="myDIV">
+        <p>Test</p>
+    </div>
+    <button onclick="del()"> Delete Me</button>
+    </body>
+
+
+    <script>
+      //basic getElementById ,TagName ,Class
+      var rowele = document.getElementById('row');
+      rowele.getElementsByTagName('p')[0].setAttribute("class","demoClass");
+        rowele.getElementsByTagName('p')[2].setAttribute("class","demoClass");
+
+      var x =10 ,y = 5;
+      document.getElementById("result").innerHTML = x*y;
+      document.getElementById("result").style.color = "red";
+    //adding function
+    function func(){
+      var btn = document.createElement("BUTTON");
+      var text = document.createTextNode("Clicked");
+      document.body.appendChild(btn);
+      btn.appendChild(text);
+    } 
+    //delete function
+    function del(){
+      var list = document.getElementById('myDIV');
+      console.log(list);
+      list.removeChild(list.firstChild);
+
+    }
+
+
+
+    </script>
+</html>

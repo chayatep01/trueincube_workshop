@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <button type="button" id="btn" class="btn btn-success">Click</button>
+  </div>
+    <script>
+    //clicked event
+    /*$("#btn").click(function(){
+      alert("hello world");
+    })*/
+
+    //hover
+    /*$("#btn").hover(function(){
+      alert("hello hover");
+    })*/
+
+    //leave
+    /*$("#btn").mouseleave(function(){
+      alert("mouse is leave");
+    })*/
+
+    //mutiple event
+    $("#btn").on({
+      click:function(){
+        alert("Clicked");
+      } ,
+      mouseleave:function(){
+        alert("Leave");
+      }
+    })
+    </script>
+</body>
+
+</html>

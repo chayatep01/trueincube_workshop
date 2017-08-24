@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lab2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>List</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" id="text" name="text" class="form-control">
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="adding(document.getElementById('text').value)">Add</button>
+                <button type="button" class="btn btn-danger" oncick="delit(document.getElementById('text').value)">Delete</button>
+            </div>
+        </div>
+        <div id="myDIV">
+        </div>
+    </div>
+    <script>
+
+      function adding(value){
+        var h = document.createElement("P");
+        var text = document.createTextNode(value);
+        document.body.appendChild(h);
+        h.appendChild(text);
+        document.getElementById('myDIV').appendChild(h);
+      }
+
+      function delit(value){
+        var list = document.getElementById('myDIV');
+        list.removeChild(list.childNodes[value]);
+      }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
