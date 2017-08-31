@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <body ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <h1>{{word}}</h1>
+        <h1>{{data.name + " " + data.age}}</h1><hr>
+
+
+        <h1>Two way data binding :</h1><br>
+        name : <input type="text" ng-model="username"><br>
+        password : <input type="text" ng-model="password">
+
+        <h1>{{"This is name"  +" "+ username }}</h1>
+        <h1>{{"This is password" +" " + password}}</h1>
+        <h1>{{ username + password}}</h1> <hr>
+
+        <h1>Using function :</h1>
+        name : <input type="number" ng-model="x"><br>
+        password : <input type="number" ng-model="b">
+        <button class="btn btn-info" ng-click="myClicked()">Click</button>
+        <h1>{{c}}</h1> <hr>
+
+        <h1>Using fillter : </h1>
+        <h1>{{a | uppercase}}</h1>
+        <h1>{{a | date : 'short'}}</h1>
+        <h1>{{a | date : 'mediumTime'}}</h1>
+        <hr>
+
+        <h1>Ng-repeat : </h1>
+        <ul>
+          <li ng-repeat="item in countryList" ng-class="{'bg-warning':item.country == 'japan' , 'bg-success':item.country =='thai'}">{{item.country}}</li>
+        </ul>
+        <ul>
+          <h1>Ng-if == japan</h1>
+          <li ng-repeat="item in countryList" ng-if="item.country=='japan'" ng-class="{'bg-warning':item.country == 'japan'}">{{item.country}}</li>
+        </ul>
+
+        <hr>
+        <h1>LAB4</h1>
+        <ul>
+          <li ng-repeat="item in topping" ng-class="{'bg-warning':$index %2 == 0 , 'bg-info':$index %2 != 0}">{{item.type}}</li>
+        </ul> <hr>
+
+       <div>
+          <label>Search: <input ng-model="searchText"></label>
+
+          <h4 ng-repeat="item in topping | filter:searchText">{{item.id +" "+ item.type}}</h4>
+
+      </div>
+
+
+
+
+
+    <script>
+    var app = angular.module("myApp", []); //create module
+
+    //create controller
+    app.controller('myCtrl',function($scope){
+      $scope.word =" Hello AngularJS";
+      $scope.whosaid = "bright said";
+      $scope.data ={name:"bright", age : 19};
+      $scope.a = new Date();
+      $scope.num = 800;
+      $scope.x;
+      $scope.b;
+      $scope.myClicked = function(){
+        $scope.c = $scope.x + $scope.b;
+      };
+      $scope.countryList = [
+        {country :'thai'},
+        {country : 'japan'},
+        {country :'korea'}
+      ];
+      $scope.topping = [
+            { id: "5002", type: "Glazed" },
+            { id: "5005", type: "Sugar" },
+            { id: "5007", type: "Powdered Sugar" },
+            { id: "5006", type: "Chocolate with Sprinkles" },
+            { id: "5003", type: "Chocolate" },
+            { id: "5004", type: "Maple" }
+      ];
+
+
+    });
+  </script>
+
+  </body>
+</html>

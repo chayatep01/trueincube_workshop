@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <body ng-app="myApp" ng-init="person = {name:'bright' , age :'26'};point = [99,3,4,5] ;a = 5; b = 5; name = 'chayatep';age=2;">
+    <h1> {{5+5}}</h1>
+    <h1>{{a+b}}</h1>
+    <h1>{{age + name }}</h1>
+    <h1>{{a*b/age}}</h1>
+    <h1>{{person}}</h1>
+    <h1>{{person.name}}</h1>
+    <h1>{{point[0]}}</h1>
+
+    <div  ng-init="person = {name:'bright' , age :'26'};bright='bright';">
+      <h1>{{person.name}}</h1>
+      <h1>{{bright}}</h1>
+    </div>
+
+
+
+
+
+
+  <script>
+    var app = angular.module("myApp", []); //create module
+  </script>
+
+  </body>
+</html>
