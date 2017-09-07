@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <title>japan food</title>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+  <div>
+    <h3 style="text-align:center">Japan food online order</h3>
+</div>
+
+
+
+
+<div class="row" ng-submit="myFunc(data)">
+  <div class="col-md-9">
+    <div class="row">
+      <div class = "col-md-4" ng-repeat= "item in list">
+        <div  class="card" >
+          <img class="card-img-top" src="{{item.photo}} " alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title" name="name" ng-model="data.name">{{item.name}}</h4>
+          <p class="card-text">{{item.detail}}</p>
+          <p class="card-text">{{item.price}} บาท</p>
+          <form>
+          <select name="select" class="form-control" ng-model="data.select" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+          </select><br>
+          <button type="submit" class="btn btn-primary">Add to cart</button>
+         </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-3">
+      <div class="row">
+
+        <div class="col-md-12">
+          <img src="https://image.flaticon.com/icons/png/512/2/2772.png" height="42" width="42" >
+          <h3>Your order :<h5 ng-repeat="item in ordered">{{item.name}}  {{item.select}} </h5></h3>
+            <div class="card">
+
+            </div>
+          <h3>Amount :<h5 ng-repeat="item in price"></h5></h3>
+          <button ng-click="myFunc" class="btn btn-danger">Clear</button>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <script>
+        var app = angular.module("myApp", []);
+        app.controller('myCtrl', function($scope) {
+
+          $scope.list = [
+            {
+              id: 1 ,
+              name: "Uchidaya Ajitama Ramen",
+              detail: "เมนูซิกเนเจอร์รสชาติตามแบบฉบับโยโกฮาม่า เส้นราเมนกลมหนึบกำลังดีในน้ำซุปกระดูกหมูและนำมันไก่ ท้อปปิ้งด้วยหมูชาชู และไข่" ,
+              photo: "https://asia-public.foodpanda.com/dynamic/production/th/images/products/649/649521_1499163965_ma.jpg",
+              qty: 60,
+              price: 250
+            }
+          ] ,
+
+          $scope.myFunc = function (value){
+              console.log(value);
+              $scope.data = {};
+              $scope.list.push(value);
+              console.log($scope.list);
+            }
+
+
+
+
+
+        });
+
+        </script>
+</body>
+
+</html>
