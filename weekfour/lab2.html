@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <header>
+            <h1 class="text-center">Review </h1>
+        </header>
+        <div class="container">
+              <div class = "list-group">
+                <div class = "list-group-item" ng-repeat = "item in list track by $index">
+                  <h3>{{item.firstname}}  {{item.lastname}}</h3>
+                  <h3>email :  {{item.email}}</h3>
+                  <h3>comment :  {{item.comment}}</h3>
+                  <h3>rate : {{item.select}}</h3>
+
+                </div>
+              </div>
+            <form class="form-horizontal" name= "pvf" ng-submit="pvf.$valid" novalidate>
+                <fieldset>
+                    <legend>Review Form {{pvf.$valid}}</legend>
+                    <div class="form-group" ng-class = "{'has-error' : pvf.firstname.$valid}">
+                      <div class="col-md-4">
+                          <h3>name :</h3>
+                            <input type="text"
+                                   name="firstname"
+                                   id="firstname"
+                                   ng-model="data.firstname"
+                                   class="form-control input-md"
+                                   ng-minlength="2"
+                                   ng-maxlength="10"
+                                   required >
+
+                            <p ng-show="pvf.firstname.$error.required" class="text-danger">fill on the gap !</p>
+                          <p ng-show="pvf.firstname.$error.minlength" class="text-danger">fill at least 2 char !</p>
+                        </div>
+                        <div class="col-md-4">
+                           <h3>lastname : </h3>
+                            <input type="text"
+                                   name="lastname"
+                                   id="lastname"
+                                   ng-model="data.lastname"
+                                   class="form-control input-md"
+                                   ng-minlength="2"
+                                   ng-maxlength="10"
+                                   required>
+                             <p ng-show="pvf.lastname.$error.required" class="text-danger">fill on the gap !</p>
+                           <p ng-show="pvf.lastname.$error.minlength" class="text-danger">fill at least 2 char !</p>
+                        </div>
+                        <div class="col-md-4">
+                           <h3>email : </h3>
+                            <input type="text"
+                                   name="email"
+                                   id="email"
+                                   ng-model="data.email"
+                                   class="form-control input-md"
+                                   ng-minlength="2"
+                                   ng-maxlength="10"
+                                   required>
+                             <p ng-show="pvf.email.$error.required" class="text-danger">fill on the gap !</p>
+                           <p ng-show="pvf.email.$error.minlength" class="text-danger">fill the correct email !</p>
+                        </div>
+                        <div class="col-md-4">
+                           <h3>comment : </h3>
+                            <textarea type="text" name="comment" id="comment" ng-model="data.comment"class="form-control input-md"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"> </label>
+                        <div class="col-md-4">
+                          <h3>rate :</h3>
+                          <select name="select" class="form-control" ng-model="data.select" required>
+                            <option value=""></option>
+                              <option value="1">one</option>
+                              <option value="2">two</option>
+                          </select>
+                          <p ng-show="pvf.select.$error.required" class="text-danger">Select  !</p>
+
+                        </div>
+                    </div>
+                    <div>
+
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <script>
+        var app = angular.module("myApp", []);
+        app.controller('myCtrl', function($scope) {
+            $scope.data = {};
+            $scope.list = [];
+
+            $scope.myFunc = function (value){
+              console.log(value);
+              $scope.data = {};
+              $scope.list.push(value);
+              console.log($scope.list);
+            }
+        });
+        </script>
+</body>
+
+</html>
