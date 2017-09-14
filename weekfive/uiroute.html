@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div ng-app = "myApp">
+    <a ui-sref="about.list" class = "btn btn-info">About</a>
+    <div ui-view></div>
+  </div>
+  <script>
+          var app = angular.module("myApp" , ["ui.router"])
+          app.config(function($stateProvider , $urlRouterProvider){
+            $urlRouterProvider.otherwise('/index')
+            $stateProvider
+              .state('about' , {
+                url: '/about' ,
+                abstract : true ,
+                templateUrl : '/template.html'
+              })
+              .state('index' , {
+                url: '/index' ,
+                template : '<h1> This is index page</h1>'
+              })
+              .state ('about.list' , {
+                url : '/list' ,
+
+                views : {
+                  'header' : {
+                   template : "<h1>header</h1>"
+                 } ,
+                 'middle' : {
+                  template : "<h1>middle</h1>"
+                 } ,
+                  'footer' : {
+                 template : "<h1>footer </h1>"
+                 }
+               }
+            })
+         })
+
+        app.controller('myCtrl', function ($scope , $state){
+
+          //trying state.go
+          $scope.goTo = function(stateName){
+            $state.go(stateName)
+          }
+
+        })
+
+  </script>
+
+</body>
+</html>

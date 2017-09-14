@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <title>Online resturant</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+      <h3 class="">Online Resturant</h3>
+
+
+      <a ui-sref="home" class = "btn btn-info">Home</a>
+      <a ui-sref="aboutus" class = "btn btn-info">About us</a>
+      <a ui-sref="foodlist" class = "btn btn-info">Food lists</a>
+      <a ui-sref="order" class = "btn btn-warning">Order now!</a>
+      <a ui-sref="login" class = "btn btn-danger">Login</a>
+
+
+  </div>
+</nav>
+
+
+
+    <div ui-view> </div>
+
+
+<script>
+   var app = angular.module("myApp" , ["ui.router"])
+   app.config(function($stateProvider , $urlRouterProvider){
+
+     $stateProvider
+       .state('home' , {
+         url : 'home' ,
+         templateUrl : '/home.html'
+       })
+       .state('aboutus' , {
+         url: '/about' ,
+         templateUrl : '/aboutus.html'
+       })
+       .state('foodlist' , {
+         url: '/foodlist' ,
+         templateUrl : '/foodlist.html'
+       })
+       .state('order' , {
+         url: '/order' ,
+         templateUrl : '/order.html'
+       })
+       .state('login' , {
+         url: '/login' ,
+         templateUrl : '/login.html'
+       })
+       })
+
+       app.controller('myCtrl', function ($scope){
+        $scope.list = [
+            {
+              id: 1 ,
+              name: "Uchidaya Ajitama Ramen",
+              detail: "เมนูซิกเนเจอร์รสชาติตามแบบฉบับโยโกฮาม่า เส้นราเมนกลมหนึบกำลังดีในน้ำซุปกระดูกหมูและนำมันไก่ ท้อปปิ้งด้วยหมูชาชู และไข่" ,
+              photo: "https://asia-public.foodpanda.com/dynamic/production/th/images/products/649/649521_1499163965_ma.jpg",
+              qty: 60,
+              price: 250
+            }
+          ]
+          $scope.myFunc = function (value){
+              console.log(value);
+              $scope.data = {};
+              $scope.list.push(value);
+              console.log($scope.list);
+            }
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div class = " container">
+  <div class="row" ng-submit="myFunc(data)">
+    <h1>Menu </h1>
+    <div class="col-md-9">
+      <div class="row">
+        <div class = "col-md-4" ng-repeat= "item in list track by $index">
+          <div  class="card" >
+          <img class="card-img-top" src="{{item.photo}}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title" name="name" ng-model="data.name">{{item.name}}</h4>
+            <p class="card-text">{{item.detail}}</p>
+            <p class="card-text">{{item.price}} บาท</p>
+            <form>
+            <select name="select" class="form-control" ng-model="data.select" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+            <button type="submit" class="btn btn-primary">Add to cart</button>
+           </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
